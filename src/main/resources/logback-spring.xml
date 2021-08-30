@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    
+    <!-- using mx to imply 'message extended' -->
+	<conversionRule conversionWord="mx" converterClass="com.poc.demo.converter.CustomMessageConverter" />
+
+    <springProfile name="dev">
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+        
+        <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+				<jsonGeneratorDecorator class="net.logstash.logback.decorate.PrettyPrintingJsonGeneratorDecorator" />
+			</encoder>
+		</appender>
+		
+		<appender name="CRLF" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+    			<pattern>%d{yyyy-MM-dd HH:mm:ss}|[%thread]|[%X{complexNestedValue:-NA}]|%-5level|%logger{36}|%mx %n</pattern>
+			</encoder>
+        </appender>
+	
+        <root level="INFO">
+            <appender-ref ref="CRLF"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+
+        <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>app.log</file>
+
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+                <!-- each archived file, size max 10MB -->
+                <maxFileSize>10MB</maxFileSize>
+                <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+                <totalSizeCap>20GB</totalSizeCap>
+                <!-- 60 days to keep -->
+                <maxHistory>60</maxHistory>
+            </rollingPolicy>
+
+            <encoder>
+                <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="org.springframework" level="ERROR"/>
+        <logger name="com.poc.demo" level="DEBUG"/>
+        <root level="ERROR">
+            <appender-ref ref="FILE-ROLLING"/>
+        </root>
+    </springProfile>
+
+</configuration>

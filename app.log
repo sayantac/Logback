@@ -1,0 +1,9 @@
+2021-08-27 14:13:50,608 INFO com.poc.demo.LogbackApplication [restartedMain] Starting LogbackApplication using Java 11.0.7 on INPC197VFP with PID 22672 (C:\Users\sayantanc655\poc-workspace\Logback\bin\main started by schakrabor282 in C:\Users\sayantanc655\poc-workspace\Logback)
+2021-08-27 14:13:50,612 DEBUG com.poc.demo.LogbackApplication [restartedMain] Running with Spring Boot v2.6.0-SNAPSHOT, Spring v5.3.9
+2021-08-27 14:13:50,612 INFO com.poc.demo.LogbackApplication [restartedMain] The following profiles are active: prod
+2021-08-27 14:13:52,357 INFO com.poc.demo.LogbackApplication [restartedMain] Started LogbackApplication in 2.425 seconds (JVM running for 3.946)
+2021-08-27 14:15:03,894 DEBUG com.poc.demo.controller.HelloController [http-nio-8080-exec-1] Hello from Logback [1, 2, 3, 4, 5]
+2021-08-27 14:17:00,714 INFO com.poc.demo.LogbackApplication [restartedMain] Starting LogbackApplication using Java 11.0.7 on INPC197VFP with PID 22672 (C:\Users\sayantanc655\poc-workspace\Logback\bin\main started by schakrabor282 in C:\Users\sayantanc655\poc-workspace\Logback)
+2021-08-27 14:17:00,714 DEBUG com.poc.demo.LogbackApplication [restartedMain] Running with Spring Boot v2.6.0-SNAPSHOT, Spring v5.3.9
+2021-08-27 14:17:00,714 INFO com.poc.demo.LogbackApplication [restartedMain] The following profiles are active: prod
+2021-08-27 14:17:01,084 INFO com.poc.demo.LogbackApplication [restartedMain] Started LogbackApplication in 0.409 seconds (JVM running for 192.674)
